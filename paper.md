@@ -57,7 +57,7 @@ To select sources of evidence for this scoping review, articles were retrieved f
 
 Given the large scale of the dataset, manual screening of all articles was not feasible. Data charting was performed using a structured and automated extraction pipeline implemented in Python. Bibliographic metadata and abstract text were retrieved via the OpenAlex API and stored in a standardized DataFrame (`.csv` file). Code and data sharing indicators were identified using predefined regular-expression (regex) rules applied to titles and abstracts. The detection rules targeted mentions of specific repositories (e.g., GitHub, Zenodo, OSF) and natural-language phrases indicating sharing practices.
 
-To ensure reliability, the automated detection rules were validated on a manually reviewed sample of 25 articles using the RRInsights custom GPT {cite}`Karakuzu2024` tool prior to full deployment. Each article was then categorized into one of four mutually exclusive sharing categories, as shown in Table 3.1.
+To ensure reliability, the automated detection rules were validated on a manually reviewed sample of 25 articles using the RRInsights custom GPT {cite}`Karakuzu2025` tool prior to full deployment. Each article was then categorized into one of four mutually exclusive sharing categories, as shown in Table 3.1.
 
 :::{table} Sharing category classification scheme.
 :label: tbl-sharing-categories
@@ -87,7 +87,7 @@ First, quantitative summaries were generated to describe overall sharing practic
 
 Temporal trends were analyzed by computing annual frequencies and proportions of sharing practices. These results were visualized using stacked bar charts (absolute counts) and line plots (percentage trends over time).
 
-To examine whether sharing practices differ across neuroscience sub-disciplines, a semantic clustering pipeline was applied to the 2,898 articles with sufficient abstract content, retrieved with the two-filter queries to OpenAlex, leading to a total sample size of 4,429 articles. The pipeline consisted of four sequential steps: (1) semantic embedding via the SPECTER2 model, (2) dimensionality reduction via UMAP, (3) density-based clustering via HDBSCAN, and (4) automatic cluster naming via the Claude API. This approach, illustrated in Figure 3.1, was inspired by the SAKURA plot methodology described by Karakuzu et al. (2025), adapted here for large-scale bibliometric analysis of neuroscience reproducibility using OpenAlex.
+To examine whether sharing practices differ across neuroscience sub-disciplines, a semantic clustering pipeline was applied to the 2,898 articles with sufficient abstract content, retrieved with the two-filter queries to OpenAlex, leading to a total sample size of 4,429 articles. The pipeline consisted of four sequential steps: (1) semantic embedding via the SPECTER2 model, (2) dimensionality reduction via UMAP, (3) density-based clustering via HDBSCAN, and (4) automatic cluster naming via the Claude API. This approach, illustrated in Figure 1, was inspired by the SAKURA plot methodology described by {cite}`Karakuzu2025`, adapted here for large-scale bibliometric analysis of neuroscience reproducibility using OpenAlex.
 
 :::{figure} static/fig3_1_pipeline.png
 :label: fig-pipeline
@@ -116,7 +116,7 @@ HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Nois
 
 Articles not sufficiently embedded within a dense neighborhood were labeled as noise (`-1`). Clusters with centroids exhibiting high cosine similarity (>0.99) in the original 768-dimensional SPECTER2 embedding space were merged to reduce redundancy, ensuring that semantically overlapping clusters are consolidated into a more coherent set of thematic domains.
 
-The initial HDBSCAN run detected 16 clusters and 163 noise points sharing code (5.63% of valid articles). Cluster names were assigned using the Claude API. The 16 resulting thematic clusters, their article counts, and their sharing rates are shown in Figure 3.2.
+The initial HDBSCAN run detected 16 clusters and 163 noise points sharing code (5.63% of valid articles). Cluster names were assigned using the Claude API. The 16 resulting thematic clusters, their article counts, and their sharing rates are shown in Figure 2.
 
 :::{figure} static/fig3_2_clusters.png
 :label: fig-clusters
@@ -145,7 +145,7 @@ This procedure allows clusters to be labeled automatically based on representati
 
 ## Selection of Sources of Evidence
 
-Figure 3.3 presents the article selection workflow for the first metadata analysis with 11,000 articles. A duplication filter was applied to remove duplicate articles across years, yielding a final sample of 10,967 articles.
+Figure 3 presents the article selection workflow for the first metadata analysis with 11,000 articles. A duplication filter was applied to remove duplicate articles across years, yielding a final sample of 10,967 articles.
 
 :::{figure} static/fig3_3_prisma_first.png
 :label: fig-prisma-first
@@ -156,7 +156,7 @@ Flow diagram of article identification with the first filter, providing an overv
 
 :::
 
-Figure 3.4 presents the article selection workflow for the second analysis using the two complementary OpenAlex filters. This query retrieved 4,429 articles used for filtering and semantic clustering (HDBSCAN). Of these, only 2,898 articles with valid abstracts were retained for clustering, and 575 articles for subfield analysis.
+Figure 4 presents the article selection workflow for the second analysis using the two complementary OpenAlex filters. This query retrieved 4,429 articles used for filtering and semantic clustering (HDBSCAN). Of these, only 2,898 articles with valid abstracts were retained for clustering, and 575 articles for subfield analysis.
 
 :::{figure} static/fig3_4_prisma_second.png
 :label: fig-prisma-second
@@ -169,7 +169,7 @@ Flow diagram of article identification, screening, and semantic clustering for t
 
 ## Characteristics of Sources of Evidence
 
-Of the 10,967 articles retrieved, 335 (3.1%) reported at least one form of open sharing (Table 3.2). Data sharing was the most prevalent practice, followed by code-only sharing, and sharing both code and data simultaneously.
+Of the 10,967 articles retrieved, 335 (3.1%) reported at least one form of open sharing (Table 2). Data sharing was the most prevalent practice, followed by code-only sharing, and sharing both code and data simultaneously.
 
 :::{table} Distribution of sharing categories across the 10,967 retrieved articles.
 :label: tbl-sharing-distribution
@@ -187,7 +187,7 @@ GitHub emerged as the most frequently referenced platform for code sharing detec
 
 In contrast, data sharing was predominantly signaled through informal narrative expressions rather than references to specific repositories. Across the abstracts, 207 occurrences were detected for phrases indicating data availability, such as "data available," "dataset provided," "raw data," "data accessibility," "publicly available data," "data repository," "supplementary data," and "open data." References to named data repositories Zenodo and OSF were comparatively rare, appearing in fewer than 6 articles combined. This discrepancy suggests that authors more frequently signal data availability through descriptive statements rather than structured repository links, which may complicate automated reproducibility audits.
 
-As illustrated in Figure 3.5, sharing practices increased over the 2015–2025 period, with the number of articles containing a sharing component rising from 10 out of 997 in 2015 to 52 out of 997 in 2025 — a fivefold increase over the decade. The sharing rate rose from 1.0% in 2015 to 5.2% in 2025. This trajectory aligns with the broader open science movement and the progressive adoption of data availability mandates by major journals. Notably, the journals contributing the most articles to the corpus included *Scientific Reports* (n = 648), *NeuroImage* (n = 591), and *Frontiers in Neuroscience* (n = 295), all of which have established policies encouraging or requiring data availability statements.
+As illustrated in Figure 5, sharing practices increased over the 2015–2025 period, with the number of articles containing a sharing component rising from 10 out of 997 in 2015 to 52 out of 997 in 2025 — a fivefold increase over the decade. The sharing rate rose from 1.0% in 2015 to 5.2% in 2025. This trajectory aligns with the broader open science movement and the progressive adoption of data availability mandates by major journals. Notably, the journals contributing the most articles to the corpus included *Scientific Reports* (n = 648), *NeuroImage* (n = 591), and *Frontiers in Neuroscience* (n = 295), all of which have established policies encouraging or requiring data availability statements.
 
 :::{figure} static/fig3_5a_stacked_bars.png
 :label: fig-sharing-trends-a
@@ -215,11 +215,11 @@ The full list of included articles (n = 11,000), along with their associated met
 
 ## Synthesis of Results
 
-To examine whether open sharing practices are evenly distributed across neuroscience subfields or concentrated in specific domains, a semantic clustering analysis was performed on the 2,898 articles retained after HDBSCAN filtering. Figure 3.6 shows the UMAP projection of the 738 articles reporting at least one sharing practice, colored by thematic cluster, revealing a structured landscape where sharing behaviors are far from uniform across the field.
+To examine whether open sharing practices are evenly distributed across neuroscience subfields or concentrated in specific domains, a semantic clustering analysis was performed on the 2,898 articles retained after HDBSCAN filtering. Figure 6 shows the UMAP projection of the 738 articles reporting at least one sharing practice, colored by thematic cluster, revealing a structured landscape where sharing behaviors are far from uniform across the field.
 
 Substantial heterogeneity in sharing rates was observed across thematic clusters, consistent with the hypothesis that reproducibility culture is discipline-specific rather than uniformly distributed across neuroscience. The highest sharing rates were observed in the *Open NeuroScience* cluster (49.2%) and the *Personalized Neuroimaging Brain Fingerprinting* cluster (30.5%), both benefiting from mature discipline-specific sharing infrastructures. The *Brain MRI Classification* cluster (24.3%) and *Brain MRI Segmentation* cluster (23.3%) also showed above-average sharing rates, likely driven by the availability of well-established open-source toolboxes (Spinal Cord Toolbox, FreeSurfer, MRtrix) that normalize code-sharing within these communities.
 
-The largest cluster with a sharing component, *Open NeuroScience* (n = 150), is both the biggest and clearly defined in the UMAP projection, indicating strong semantic coherence (Figure 3.6). It likely contains articles focused on methodological contributions — tools, pipelines, and frameworks for reproducible neuroscience research — rather than primary empirical findings. Its prominence within the sharing subset suggests that reproducibility practices are mainly concentrated in this methodologically aware segment of the literature.
+The largest cluster with a sharing component, *Open NeuroScience* (n = 150), is both the biggest and clearly defined in the UMAP projection, indicating strong semantic coherence (Figure 6). It likely contains articles focused on methodological contributions — tools, pipelines, and frameworks for reproducible neuroscience research — rather than primary empirical findings. Its prominence within the sharing subset suggests that reproducibility practices are mainly concentrated in this methodologically aware segment of the literature.
 
 Beyond this cluster, sharing practices appear across diverse thematic domains, including *Brain Tumor MRI Classification* (n = 60), *EEG BCI Research* (n = 74), and *AI Frameworks* (n = 54), as well as clinically oriented clusters such as *Brain Organoid Disease Modeling* (n = 14). A persistent gap exists in sharing practices between clinical neuroscience and BCI or quantitative imaging, with higher rates of sharing observed in subfields employing AI or informatics.
 
@@ -234,11 +234,11 @@ UMAP projection of neuroscience articles reporting code and/or data sharing, col
 
 Notably, 163 articles were classified as unclustered by HDBSCAN, suggesting that a substantial fraction of sharing articles occupy isolated or ambiguous semantic positions, potentially reflecting interdisciplinary work or atypical use of reproducibility language.
 
-To further illustrate the diversity of sharing practices across clusters, a selection of representative articles was examined. Within the *Open Science* cluster, Poldrack et al. (2019) argue how data and code sharing are central to reproducibility in data analysis, evoking initiatives such as the Human Connectome Project (HCP) and the functional MRI Data Center (fMRIDC) as pioneers of data sharing in the neuroimaging community, along with the use of BIDS — a data science concept describing how a dataset is organized and annotated to maximize reusability. They also highlight the emergence of a consistent open ecosystem based on Python that enables reproducible data analysis and visualization.
+To further illustrate the diversity of sharing practices across clusters, a selection of representative articles was examined. Within the *Open Science* cluster, {cite}`Poldrack2019` argue how data and code sharing are central to reproducibility in data analysis, evoking initiatives such as the Human Connectome Project (HCP) and the functional MRI Data Center (fMRIDC) as pioneers of data sharing in the neuroimaging community, along with the use of BIDS — a data science concept describing how a dataset is organized and annotated to maximize reusability. They also highlight the emergence of a consistent open ecosystem based on Python that enables reproducible data analysis and visualization.
 
-In the *Deep Learning MRI Segmentation* cluster, Magadza & Viriri (2023) share only their code via GitHub for the use of nnU-Net for brain tumor segmentation, while Getmanskaya et al. (2021) provide a more comprehensive sharing package encompassing both U-Net code on GitHub and multiple open electron microscopy datasets. Conversely, Yang et al. (2023) describe their federated learning framework in methodological detail but provide no direct code link, relying instead on dataset references embedded in the text — a practice that signals data awareness without ensuring reproducibility.
+In the *Deep Learning MRI Segmentation* cluster, {cite}`Magadza2023` share only their code via GitHub for the use of nnU-Net for brain tumor segmentation, while  {cite}`Getmanskaya2022` provide a more comprehensive sharing package encompassing both U-Net code on GitHub and multiple open electron microscopy datasets. Conversely, {cite}`Yang2023` describe their federated learning framework in methodological detail but provide no direct code link, relying instead on dataset references embedded in the text — a practice that signals data awareness without ensuring reproducibility.
 
-Beyond abstract-level detection, a LLM review of 25 articles was conducted with the custom GPT RRInsights {cite}`Karakuzu2024` to assess sharing practices in their broader publication context. This qualitative examination revealed a recurrent structural pattern: even when code, data, and the article itself are technically accessible, they are systematically hosted across disparate platforms — typically a journal website, a GitHub repository, and a third-party data archive such as Zenodo or OSF. This decentralization of research artefacts creates a non-trivial reproducibility barrier: a researcher attempting to replicate a study must independently locate, version-match, and integrate components spread across multiple repositories, often without explicit cross-referencing between them. Accessibility, in this sense, does not equate to reproducibility — a distinction that current sharing metrics, including those used in this review, cannot fully capture. Furthermore, none of the articles retrieved manually used interactive figures, allowing the reader to engage directly with the data; everything was static, without a possibility of direct verification of the authors' claims.
+Beyond abstract-level detection, a LLM review of 25 articles was conducted with the custom GPT RRInsights {cite}`Karakuzu2025` to assess sharing practices in their broader publication context. This qualitative examination revealed a recurrent structural pattern: even when code, data, and the article itself are technically accessible, they are systematically hosted across disparate platforms — typically a journal website, a GitHub repository, and a third-party data archive such as Zenodo or OSF. This decentralization of research artefacts creates a non-trivial reproducibility barrier: a researcher attempting to replicate a study must independently locate, version-match, and integrate components spread across multiple repositories, often without explicit cross-referencing between them. Accessibility, in this sense, does not equate to reproducibility — a distinction that current sharing metrics, including those used in this review, cannot fully capture. Furthermore, none of the articles retrieved manually used interactive figures, allowing the reader to engage directly with the data; everything was static, without a possibility of direct verification of the authors' claims.
 
 ## Summary of Evidence
 
