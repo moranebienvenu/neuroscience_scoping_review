@@ -1,0 +1,55 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: 'REPRODUCIBILITY PRATICES IN NEUROSCIENCE: A SCOPING REVIEW (2015–2025)'
+  subtitle: Based on LLM
+  authors:
+    - name: Morane Bienvenu 
+      orcid: 0009-0005-7487-1567
+      affiliations: polymtl
+      email: morane-cecile.bienvenu@etud.polymtl.ca
+      
+    - id: polymtl
+      institution: NeuroPoly Lab, Polytechnique Montreal
+      ror: https://ror.org/05f8d4e86
+      isni: 0000 0004 0435 3292
+      department: Electrical Engineering
+      address: 2500 Chem. de Polytechnique
+      city: Montreal
+      region: Quebec
+      country: Canada
+      postal_code: H3T 1J4
+      phone: 1 (514) 340-4711
+    - id: mhi
+ 
+
+  keywords:
+    - scoping review 
+    - LLM
+    - neuroscience 
+    - reproducibility
+  github: https://github.com/moranebienvenu/neuroscience_scoping_review
+  banner: featured.jpg
+  venue: Neurolibre #Production will override this.
+  subject: Living Preprint # Production will override this.
+  numbering:
+    headings: true
+  # doi: 10.55458/neurolibre.xxxxx # Production will override this.
+  open_access: true
+  license:
+    content: CC-BY-4.0
+    code: MIT
+  abbreviations:
+    MyST: Markedly Structured Markdown
+    AI: Artificial Intelligence
+  bibliography:
+    - paper.bib
+  resources:
+    # - content/figure1.ipynb
+    # - content/figure2.md
+site:
+  template: article-theme # Or book-theme
+  options:
+    favicon: static/favicon.ico # Production will override this for branding.
+    logo: static/logo.png # Production will override this for branding.
+    twitter: neurolibre
