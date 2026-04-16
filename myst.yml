@@ -29,7 +29,7 @@ project:
     - neuroscience 
     - reproducibility
   github: https://github.com/moranebienvenu/neuroscience_scoping_review
-  banner: featured.jpg
+  banner: featured.png
   venue: Neurolibre #Production will override this.
   subject: Living Preprint # Production will override this.
   numbering:
