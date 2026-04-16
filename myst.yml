@@ -2,7 +2,7 @@
 version: 1
 project:
   title: 'REPRODUCIBILITY PRATICES IN NEUROSCIENCE: A SCOPING REVIEW (2015–2025)'
-  subtitle: Based on LLM
+  subtitle: 
   authors:
     - name: Morane Bienvenu 
       orcid: 0009-0005-7487-1567
@@ -20,9 +20,6 @@ project:
       country: Canada
       postal_code: H3T 1J4
       phone: 1 (514) 340-4711
-    - id: mhi
- 
-
   keywords:
     - scoping review 
     - LLM
@@ -45,7 +42,7 @@ project:
   bibliography:
     - paper.bib
   resources:
-    # - content/figure1.ipynb
+     - content/Supplementary_File_S1.csv
     # - content/figure2.md
 site:
   template: article-theme # Or book-theme
